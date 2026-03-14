@@ -59,4 +59,5 @@ end, { noremap = true, silent = true })
 
 -- Float Term
 map( 'n', '<leader>ct', "<cmd>FloatermToggle<cr>", { desc = "Float Term" } )
+map( 't', '<C-x>', '<C-\\><C-N>', { desc = 'Escape Terminal Mode' } )
 

@@ -29,13 +29,7 @@ local replace_home_path = function(path)
   return path
 end
 
-local letters = {}
-for i = string.byte "g", string.byte "z" do
-  local letter = string.char(i)
-  if not vim.tbl_contains({ "j", "k", "h", "l" }, letter) then
-    table.insert(letters, letter)
-  end
-end
+local letters = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }
 
 local function set_recent_files(tb)
   local files = {}
