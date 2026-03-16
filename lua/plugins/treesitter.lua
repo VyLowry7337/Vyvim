@@ -1,10 +1,9 @@
-return {
-    {
-        'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-            { 'HiPhish/rainbow-delimiters.nvim' },
-            {  }
-        }
-    }
+return 
+{
+    'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+        { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' },
+    },
+    opts = {}
 }
 

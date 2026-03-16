@@ -23,8 +23,10 @@ M.cheatsheet = {
 
 M.ui = {
   cmp = {
+    style = "flat_dark",
     icons = true,
-    icons_left = true,
+    icons_left = false,
+    format_colors = { lsp = true, icon = '󱓻 ' }
   },
   tabufline = {
     lazyload = false,

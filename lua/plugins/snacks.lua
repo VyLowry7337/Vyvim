@@ -121,9 +121,9 @@ sources.explorer = {
   icons = {
     files = {
       enabled = true,
-      dir = "󰉋",
-      dir_open = "󰝰",
-      file = "󰈔",
+      dir = "󰉋 ",
+      dir_open = "󰝰 ",
+      file = "󰈔 ",
     },
     git = {
       enabled = true,
@@ -165,18 +165,8 @@ local config = {
   scope = {},
   layout = {},
   indent = {
-      enabled = false,
+      enabled = true,
       indent = {
-      hl = {
-            "SnacksIndent1",
-            "SnacksIndent2",
-            "SnacksIndent3",
-            "SnacksIndent4",
-            "SnacksIndent5",
-            "SnacksIndent6",
-            "SnacksIndent7",
-            "SnacksIndent8",
-            },
     },
 
       animate = {
