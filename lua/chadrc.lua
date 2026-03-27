@@ -1,23 +1,39 @@
 ---@type ChadrcConfig
 local M = {}
+local highlights = require("ui.highlightOverrides")
 
 M.base46 = {
-  theme = "catppuccin",
-  transparency = true,
 
-  hl_override = {
-    Comment = { italic = true },
-    ["@comment"] = { italic = true },
-  },
+    theme = "catppuccin",
+    transparency = true,
+    integrations = {
+        "render-markdown",
+        "blink",
+        "blink-pair",
+        "devicons",
+        "flash",
+        "nvcheatsheet",
+        "lsp",
+        "whichkey",
+        "mason",
+        "navic",
+        "rainbowdelimiters",
+        "semantic_tokens",
+        "tiny-inline-diagnostic",
+        "trouble",
+        "todo",
+        "syntax",
+    },
+    hl_override = highlights.override,
 }
 
 M.nvdash = {
-    buttons = require('ui.nvdash'),
+    buttons = require("ui.nvdash"),
     load_on_startup = true,
 }
 
 M.cheatsheet = {
-  theme = "grid",
+    theme = "grid",
 }
 
 M.lsp = {
@@ -25,17 +41,17 @@ M.lsp = {
 }
 
 M.ui = {
-  cmp = {
-      style = "atom_colored",
-  },
-  tabufline = {
-    lazyload = false,
-  },
-  statusline = {
-      enabled = true,
-      theme = "minimal",
-      separator_style = "round",
-  }
+    cmp = {
+        style = "flat_dark",
+    },
+    tabufline = {
+        lazyload = false,
+    },
+    statusline = {
+        enabled = true,
+        theme = "default",
+        separator_style = "default",
+    },
 }
 
 M.term = {
@@ -44,12 +60,12 @@ M.term = {
     winopts = { number = false, relativenumber = false },
     sizes = { sp = 0.3, vsp = 0.2, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
     float = {
-      relative = "editor",
-      row = 0.3,
-      col = 0.25,
-      width = 0.5,
-      height = 0.4,
-      border = "single",
+        relative = "editor",
+        row = 0.3,
+        col = 0.25,
+        width = 0.5,
+        height = 0.4,
+        border = "single",
     },
 }
 

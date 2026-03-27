@@ -1,34 +1,30 @@
+---@module "conform"
+---@type conform.setupOpts
 local options = {
-    default_format_opts = {
-        timeout_ms = 5000,
-        async = false,
-        quiet = false,
-        lsp_format = "fallback",
-    },
     formatters_by_ft = {
+        markdown = { "prettier" },
         zsh = { "shfmt" },
-        json = { "prettierd" },
+        json = { "prettier" },
         lua = { "stylua" },
         css = { "prettier" },
         html = { "prettier" },
         yaml = { "yamlfmt" },
-        python = { "black" },
+        python = {
+            "ruff_fix",
+            "ruff_format",
+            "ruff_organize_imports",
+        },
+    },
+
+    default_format_opts = {
+        lsp_format = "fallback",
     },
 
     format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
+        timeout_ms = 1500,
     },
 
-    formatters = {
-        black = {
-            prepend_args = { "--fast" },
-        },
-        injected = { options = { ignore_errors = true } },
-        isort = {
-            prepend_args = { "--profile", "black" },
-        },
-    },
+    formatters = {},
 }
 
 return options

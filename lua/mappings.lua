@@ -7,18 +7,23 @@ map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr =
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
+-- Better Identing </>
+map("v", "<", "<gv", { desc = "Indent left" })
+map("v", ">", ">gv", { desc = "Indent right" })
+
 -- General Helpers
 map("n", ";", ":", { desc = "CMD enter command mode" }) -- ';' for cmdline
-map('n', '<C-q>', '<cmd>wqall<CR>', { desc = 'Save All & Exit' }) -- Save all and Exit
-map('n', '<C-C>', 'ciw') -- Change Inner Word Shortcut
-map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>") -- Quicksave
+map("n", "<C-q>", "<cmd>wqall<CR>", { desc = "Save All & Exit" }) -- Save all and Exit
+map("n", "<C-C>", "ciw") -- Change Inner Word Shortcut
+map({ "n" }, "<C-s>", "<cmd> w <cr>") -- Quicksave
 
 -- Snacks
 map({ "n", "v" }, "<C-n>", "<cmd>lua Snacks.explorer.open()<CR>")
-map('n', '<leader>ff', "<cmd>lua Snacks.picker.files()<CR>", { desc = "Find Files" })
-map('n', '<leader>fr', "<cmd>lua Snacks.picker.recent()<CR>", { desc = "Find Recent" })
+map("n", "<leader>ff", "<cmd>lua Snacks.picker.files()<CR>", { desc = "Find Files" })
+map("n", "<leader>fr", "<cmd>lua Snacks.picker.recent()<CR>", { desc = "Find Recent" })
 map("n", "<leader>fg", "<cmd>lua Snacks.picker.grep()<CR>", { desc = "Grep" })
-map('n', '<leader>fq', "<cmd>lua Snacks.picker.qflist()<CR>", { desc = "Quickfix List" })
+map("n", "<leader>fq", "<cmd>lua Snacks.picker.qflist()<CR>", { desc = "Quickfix List" })
+map("n", "<leader>ft", "<cmd>lua Snacks.picker.todo_comments()<CR>", { desc = "Todo Comments" })
 map("n", "<leader>fb", "<cmd>lua Snacks.picker.buffers()<CR>", { desc = "Find Buffers" })
 map("n", "<leader>fH", "<cmd>lua Snacks.picker.help()<CR>", { desc = "Help Pages" })
 map("n", "<leader>fm", "<cmd>lua Snacks.picker.marks()<CR>", { desc = "Find Marks" })
@@ -30,10 +35,17 @@ map("n", "<leader>fk", "<cmd>lua Snacks.picker.keymaps()<CR>", { desc = "Keymap 
 map("n", "<leader>fp", "<cmd>lua Snacks.picker.lazy()<CR>", { desc = "Plugin Specs Search" })
 
 -- Conform (Formatter)
-map('n', '<leader>cf', function() require('conform').format({ async = true }) end, { desc = "Format File" })
+map("n", "<leader>cf", function()
+    require("conform").format({ async = true })
+end, { desc = "Format File" })
 
 -- Buffers
-map("n", "X", "<cmd>lua require('nvchad.tabufline').close_buffer()<CR>", { desc = 'Close buffer', noremap = true, silent = true })
+map(
+    "n",
+    "X",
+    "<cmd>lua require('nvchad.tabufline').close_buffer()<CR>",
+    { desc = "Close buffer", noremap = true, silent = true }
+)
 map("n", "L", "<cmd>lua require('nvchad.tabufline').next()<CR>", { noremap = true, silent = true })
 map("n", "H", "<cmd>lua require('nvchad.tabufline').prev()<CR>", { noremap = true, silent = true })
 
@@ -42,8 +54,8 @@ map("n", "<leader>/", "<cmd>normal gcc<cr>", { desc = "Comment" })
 map("v", "<leader>/", "<cmd>normal gcc<cr>", { desc = "Comment" })
 
 -- Move Line Up and Down
-map("v", "J", ":m '>+1<CR>gv==kgvo<esc>=kgvo", { desc = "move highlighted text down" })
-map("v", "K", ":m '<-2<CR>gv==jgvo<esc>=jgvo", { desc = "move highlighted text up" })
+-- map("v", "J", ":m '>+1<CR>gv==kgvo<esc>=kgvo", { desc = "move highlighted text down" })
+-- map("v", "K", ":m '<-2<CR>gv==jgvo<esc>=jgvo", { desc = "move highlighted text up" })
 
 -- Insert Mode Navigation
 map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
@@ -59,23 +71,25 @@ map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
-
-
 -- Clear Search Highlights
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 
 -- NvChad Utilities
-map('n', '<leader>Nh', '<cmd>NvCheatsheet<CR>', { desc = "NvChad Cheatsheet" })
-map('n', '<leader>Nd', '<cmd>Nvdash<CR>', { desc = "NvDash" })
+map("n", "<leader>Nh", "<cmd>NvCheatsheet<CR>", { desc = "NvChad Cheatsheet" })
+map("n", "<leader>Nd", "<cmd>Nvdash<CR>", { desc = "NvDash" })
 map("n", "<leader>th", function()
-  require("nvchad.themes").open()
-end, { desc = 'Theme picker' })
+    require("nvchad.themes").open()
+end, { desc = "Theme picker" })
 
 -- Nvchad Term
-map({ "n", "t" }, "<C-\\>", function() require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" } end, { desc = "terminal toggleable vertical term" })
-map({ "n", "t" }, "<C-/>", function() require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" } end, { desc = "terminal toggleable horizontal term" })
-map({ 'n', 't' }, '<leader>T', "<cmd>FloatermToggle<cr>", { desc = "Float Term" } )
-map( 't', '<C-x>', '<C-\\><C-N>', { desc = 'Escape Terminal Mode' } )
+map({ "n", "t" }, "<C-\\>", function()
+    require("nvchad.term").toggle({ pos = "vsp", id = "vtoggleTerm" })
+end, { desc = "terminal toggleable vertical term" })
+map({ "n", "t" }, "<C-/>", function()
+    require("nvchad.term").toggle({ pos = "sp", id = "htoggleTerm" })
+end, { desc = "terminal toggleable horizontal term" })
+map({ "n", "t" }, "<leader>T", "<cmd>FloatermToggle<cr>", { desc = "Float Term" })
+map("t", "<C-x>", "<C-\\><C-N>", { desc = "Escape Terminal Mode" })
 
 -- Tiny Inline Diagnostics Toggles
 map("n", "<leader>de", "<cmd>TinyInlineDiag enable<cr>", { desc = "Enable diagnostics" })
@@ -85,12 +99,11 @@ map("n", "<leader>dc", "<cmd>TinyInlineDiag toggle_cursor_only<cr>", { desc = "T
 map("n", "<leader>dr", "<cmd>TinyInlineDiag reset<cr>", { desc = "Reset diagnostic options" })
 
 -- Pretty Hover
-map('n', 'K', function()
-    require('pretty_hover').hover()
+map("n", "K", function()
+    require("pretty_hover").hover()
 end, { silent = true })
 
 -- Tiny Code Action
 map({ "n", "x" }, "<leader>ca", function()
     require("tiny-code-action").code_action()
-end, { desc = 'Code Action', noremap = true, silent = true })
-
+end, { desc = "Code Action", noremap = true, silent = true })
