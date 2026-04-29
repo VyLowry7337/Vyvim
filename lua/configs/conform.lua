@@ -2,18 +2,20 @@
 ---@type conform.setupOpts
 local options = {
     formatters_by_ft = {
-        markdown = { "prettier" },
+        markdown = { "rumdl" },
         zsh = { "shfmt" },
-        json = { "prettier" },
+        json = { "jq" },
         lua = { "stylua" },
         css = { "prettier" },
         html = { "prettier" },
         yaml = { "yamlfmt" },
+        toml = { "tombi" },
         python = {
             "ruff_fix",
             "ruff_format",
             "ruff_organize_imports",
         },
+        javascript = { "prettier" },
     },
 
     default_format_opts = {
@@ -24,7 +26,11 @@ local options = {
         timeout_ms = 1500,
     },
 
-    formatters = {},
+    formatters = {
+        prettier = {
+            prepend_args = { "--bracket-same-line", "true" },
+        },
+    },
 }
 
 return options

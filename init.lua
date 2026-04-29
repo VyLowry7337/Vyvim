@@ -1,5 +1,6 @@
 vim.g.base46_cache = vim.fn.stdpath("data") .. "/base46/"
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 vim.o.termguicolors = true
 
 local enable_providers = {
@@ -50,3 +51,5 @@ require("autocmds")
 vim.schedule(function()
     require("mappings")
 end)
+
+vim.cmd("runtime macros/matchit.vim")

@@ -127,15 +127,15 @@ sources.explorer = {
         },
         git = {
             enabled = true,
-            staged = "",
-            added = "",
-            deleted = "",
-            ignored = "",
-            modified = "",
-            renamed = "",
-            unmerged = "",
-            untracked = "",
-            commit = "󰜘",
+            staged = " ",
+            added = "󰍌 ",
+            deleted = "󰚃 ",
+            ignored = "󰮔 ",
+            modified = "󰣕 ",
+            renamed = "󰛿 ",
+            unmerged = " ",
+            untracked = " ",
+            commit = "󰜘 ",
         },
         tree = {
             vertical = " ", -- vertical = "│ ",
@@ -161,8 +161,7 @@ sources.explorer = {
 }
 
 local config = {
-    image = { enabled = true },
-    toggle = { enabled = true },
+    image = { enabled = false },
     dim = { enabled = true },
     scope = { enabled = true },
     indent = {
@@ -170,7 +169,7 @@ local config = {
         indent = {},
 
         animate = {
-            enabled = true,
+            enabled = not vim.g.neovide,
             style = "up_down",
             duration = {
                 step = 50,
@@ -188,7 +187,7 @@ local config = {
         },
     },
     input = {
-        enabled = true,
+        enabled = false,
         win = {
             keys = {
                 i_esc = { "<esc>", { "cmp_close", "cancel" }, mode = "i", expr = true },
@@ -204,6 +203,7 @@ local config = {
         replace_netrw = true,
     },
     picker = {
+        enabled = true,
         previewers = {
             diff = {
                 style = "terminal",
@@ -222,14 +222,15 @@ local config = {
         sources = sources,
     },
 
-    lazygit = {
-        configure = true,
-    },
+    lazygit = { configure = true },
+    toggle = { enabled = true },
+    zen = { enabled = true },
 }
 
 return {
     "folke/snacks.nvim",
     lazy = false,
+    priority = 1000,
     config = function()
         require("snacks").setup(config)
         local original_icon = Snacks.util.icon

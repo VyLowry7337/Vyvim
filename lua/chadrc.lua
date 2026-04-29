@@ -5,7 +5,8 @@ local highlights = require("ui.highlightOverrides")
 M.base46 = {
 
     theme = "catppuccin",
-    transparency = true,
+    theme_toggle = { "catppuccin", "onedark" },
+    transparency = false,
     integrations = {
         "render-markdown",
         "blink",
@@ -28,6 +29,7 @@ M.base46 = {
 }
 
 M.nvdash = {
+    header = require("ui.nvDashAscii"),
     buttons = require("ui.nvdash"),
     load_on_startup = true,
 }

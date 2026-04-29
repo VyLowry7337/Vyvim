@@ -6,5 +6,7 @@ M.linters_by_ft = {
     css = { "stylelint" },
     lua = { "selene" },
     json = { "jsonlint" },
+    yaml = { "yamllint" },
     toml = { "tombi" },
+    markdown = { "rumdl" },
 }

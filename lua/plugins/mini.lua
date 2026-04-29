@@ -1,6 +1,7 @@
 return {
     {
         "nvim-mini/mini.animate",
+        cond = not vim.g.neovide,
         event = "VeryLazy",
         opts = {},
     },
@@ -23,7 +24,7 @@ return {
         version = "*",
         opts = {
             mappings = {
-                -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+                -- Move visual selection in Visual mode.
                 left = "<S-h>",
                 right = "<S-l>",
                 down = "<S-j>",

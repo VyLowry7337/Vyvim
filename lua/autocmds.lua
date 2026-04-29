@@ -3,8 +3,17 @@ require("nvchad.autocmds")
 local cmd = vim.api.nvim_command
 local aucmd = vim.api.nvim_create_autocmd
 
+-- Resize splits if window resized
+aucmd({ "VimResized" }, {
+    callback = function()
+        local current_tab = vim.fn.tabpagenr()
+        vim.cmd("tabdo wincmd =")
+        vim.cmd("tabnext" .. current_tab)
+    end,
+})
+
 -- Disable Ruff's Hover
-vim.api.nvim_create_autocmd("LspAttach", {
+aucmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -109,4 +118,34 @@ vim.api.nvim_create_autocmd("InsertLeave", {
         end
     end,
     desc = "Auto-save HTML on leaving insert mode for live preview",
+})
+
+-- JSON Comment Diagnostic Bypass
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+        if client == nil then
+            return
+        end
+
+        -- Ignore trailing commas in jsonc
+        if client.name == "json" and client:supports_method("textDocument/publishDiagnostics") then
+            local orig_handler = vim.lsp.handlers["textDocument/publishDiagnostics"]
+
+            vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+                if result and result.uri:match("%.jsonc$") and result.diagnostics then
+                    -- Iterate backward so table.remove is safe
+                    for i = #result.diagnostics, 1, -1 do
+                        if result.diagnostics[i].code == 519 then
+                            table.remove(result.diagnostics, i)
+                        end
+                    end
+                end
+                -- Pass the filtered diagnostics back to Neovim
+                orig_handler(err, result, ctx, config)
+            end
+        end
+    end,
 })

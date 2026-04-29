@@ -1,11 +1,10 @@
 local M = {}
 
 M.override = {
+    -- Syntax
     Comment = { italic = true },
-
     ["@type"] = { italic = true },
     ["@type.builtin"] = { italic = true },
-
     ["@keyword"] = { italic = true },
     ["@keyword.repeat"] = { italic = true },
     ["@keyword.return"] = { italic = true },
@@ -17,10 +16,8 @@ M.override = {
     ["@keyword.conditional"] = { italic = true },
     ["@keyword.directive.define"] = { italic = true },
     ["@keyword.conditional.ternary"] = { italic = true },
-
     ["@variable"] = { fg = "NONE" },
     ["@variable.parameter"] = { fg = "NONE" },
-
     ["@function"] = { fg = "NONE" },
     Function = { fg = "NONE" },
 }

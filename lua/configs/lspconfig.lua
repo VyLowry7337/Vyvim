@@ -27,9 +27,17 @@ vim.diagnostic.config({
 })
 
 lspconfig.servers = {
+    "vtsls",
     "lua_ls",
     "ty",
     "ruff",
+    "bashls",
+    "cssls",
+    "fish_lsp",
+    "html",
+    "jsonls",
+    "tombi",
+    "yamlls",
 }
 
 vim.lsp.config("lua_ls", {
@@ -39,6 +47,32 @@ vim.lsp.config("lua_ls", {
 
     settings = {
         Lua = {
+            diagnostics = {
+                enable = true,
+            },
+
+            workspace = {
+                library = {
+                    vim.fn.expand("$VIMRUNTIME/lua"),
+                    vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
+                    vim.fn.stdpath("data") .. "/lazy/ui/nvchad_types",
+                    vim.fn.stdpath("data") .. "/lazy/lazy.nvim/lua/lazy",
+                },
+                maxPreload = 100000,
+                preloadFileSize = 10000,
+            },
+        },
+    },
+})
+
+vim.lsp.config("vtsls", {
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+    filetypes = { "typescript", "javascript" },
+
+    settings = {
+        vtsls = {
             diagnostics = {
                 enable = true,
             },
@@ -85,4 +119,21 @@ vim.lsp.config("ruff", {
     },
 })
 
-vim.lsp.enable({ "ruff", "ty", "lua_ls" })
+vim.lsp.config("jsonls", {
+    settings = {
+        schemas = require("schemastore").json.schemas(),
+        validate = { enable = true },
+    },
+})
+
+vim.lsp.config("yamlls", {
+    settings = {
+        yaml = {
+            schemaStore = {
+                enable = false,
+                url = "",
+            },
+            schemas = require("schemastore").yaml.schemas(),
+        },
+    },
+})
