@@ -75,6 +75,14 @@ return {
                     },
                 },
             },
+            commands = {
+                history = {
+                    view = "popup",
+                },
+                last = {
+                    view = "mini",
+                },
+            },
             views = {
                 cmdline_input = {
                     relative = "cursor",
@@ -151,6 +159,7 @@ return {
                 },
                 progress = {
                     enabled = true,
+                    view = "mini",
                 },
                 hover = {
                     enabled = false,
@@ -161,6 +170,7 @@ return {
                 },
                 messages = {
                     enabled = true,
+                    view = "notify",
                 },
             },
             notify = {
@@ -179,7 +189,6 @@ return {
                             { find = "%d more lines" },
                             { find = "E486: Pattern not found: (.+)" },
                             { find = "^/([^/]+)$" },
-                            { find = "%d lines yanked" },
                             { find = "^table: 0x[0-9a-fA-F]+$" },
                             { find = "^%d+ substitutions on %d+ lines$" },
                             { find = "^No matching notification found to replace$" },
@@ -196,8 +205,6 @@ return {
                             },
                             { find = "no manual entry for" },
                             { find = "No matching notification found to replace" },
-                            { find = "Already at oldest change" },
-                            { find = "Already at newest change" },
                             { find = "is deprecated" },
                             { find = "Debug Failure" },
                             { find = "Error executing Lua callback: vim/_editor.lua:0" },
@@ -210,7 +217,7 @@ return {
                     opts = { skip = true },
                 },
                 {
-                    view = "popup",
+                    view = "notify",
                     filter = { min_height = 20 },
                     opts = { lang = "lua" },
                 },

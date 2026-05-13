@@ -14,9 +14,12 @@ local signs = {
 vim.diagnostic.config({
     virtual_text = false,
     update_in_insert = false,
-    underline = false,
-    severity_sort = false,
+    severity_sort = true,
+    underline = {
+        severity = { min = vim.diagnostic.severity.ERROR },
+    },
     signs = {
+        severity = { min = vim.diagnostic.severity.ERROR },
         text = {
             [sev.ERROR] = signs.Error,
             [sev.WARN] = signs.Warn,
@@ -108,14 +111,6 @@ vim.lsp.config("ty", {
                 autoImport = false,
             },
         },
-    },
-})
-
-vim.lsp.config("ruff", {
-    settings = {
-        logLevel = "error",
-        lineLength = 88,
-        logFile = "/Users/dom/.local/state/ruff/ruff.log",
     },
 })
 

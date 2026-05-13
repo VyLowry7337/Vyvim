@@ -101,7 +101,7 @@ return function()
             pad = 3,
             content = "fit",
             { txt = "  Update [u]", hl = "changed", keys = "u", cmd = ":Lazy sync <cr>" },
-            { txt = "  Files [f]", hl = "Added", keys = "f", cmd = ":lua Snacks.picker.files()<cr>" },
+            { txt = "  Files [f]", hl = "Added", keys = "f", cmd = ":Telescope find_files <cr>" },
             { txt = "  Config [c]", hl = "nviminternalError", keys = "c", cmd = ":e ~/.config/nvim/init.lua <cr>" },
             { txt = "󱥚  Themes [t]", keys = "t", cmd = ":Telescope themes <cr>" },
         },

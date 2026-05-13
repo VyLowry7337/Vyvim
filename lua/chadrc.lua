@@ -1,11 +1,10 @@
 ---@type ChadrcConfig
 local M = {}
-local highlights = require("ui.highlightOverrides")
 
 M.base46 = {
 
     theme = "catppuccin",
-    theme_toggle = { "catppuccin", "onedark" },
+    theme_toggle = { "catppuccin", "onenord" },
     transparency = false,
     integrations = {
         "render-markdown",
@@ -25,7 +24,6 @@ M.base46 = {
         "todo",
         "syntax",
     },
-    hl_override = highlights.override,
 }
 
 M.nvdash = {

@@ -96,7 +96,7 @@ sources.explorer = {
         if not item.parent and item.dir then
             for i, entry in ipairs(ret) do
                 if entry.virtual then
-                    ret[i][1] = Snacks.picker.util.align("", picker.opts.formatters.file.icon_width or 2)
+                    ret[i][1] = Snacks.picker.util.align("󰊠 ", picker.opts.formatters.file.icon_width or 2)
                     ret[i][2] = "SnacksPickerRoot"
                     break
                 end
@@ -108,8 +108,8 @@ sources.explorer = {
         preview = "main",
         layout = {
             backdrop = false,
-            width = 30,
-            min_width = 20,
+            width = 25,
+            min_width = 25,
             height = 0,
             position = "right",
             border = "none",
@@ -118,6 +118,9 @@ sources.explorer = {
             { win = "list", border = "none" },
         },
     },
+    diagnostics = false,
+    git_status = false,
+    git_untracked = false,
     icons = {
         files = {
             enabled = true,
@@ -187,13 +190,26 @@ local config = {
         },
     },
     input = {
-        enabled = false,
+        enabled = true,
         win = {
             keys = {
                 i_esc = { "<esc>", { "cmp_close", "cancel" }, mode = "i", expr = true },
             },
         },
     },
+    notifier = {
+        enabled = true,
+        style = "fancy",
+        icons = {
+            error = " ",
+            warn = " ",
+            info = " ",
+            debug = " ",
+            trace = " ",
+        },
+    },
+    quickfile = { enabled = true },
+    statuscolumn = { enabled = false },
     terminal = {
         win = {
             wo = { number = false, relativenumber = false },
@@ -222,9 +238,17 @@ local config = {
         sources = sources,
     },
 
-    lazygit = { configure = true },
+    lazygit = {
+        enabled = true,
+        configure = true,
+    },
     toggle = { enabled = true },
     zen = { enabled = true },
+    styles = {
+        notification = {
+            wo = { wrap = true },
+        },
+    },
 }
 
 return {

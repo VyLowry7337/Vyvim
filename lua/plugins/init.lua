@@ -1,6 +1,21 @@
 return {
 
     {
+        "mikavilpas/yazi.nvim",
+        version = "*",
+        event = "VeryLazy",
+        dependencies = {
+            { "nvim-lua/plenary.nvim", lazy = true },
+        },
+        ---@type YaziConfig | {}
+        opts = {
+            change_neovim_cwd_on_close = true,
+            floating_window_scaling_factor = 0.75,
+            yazi_floating_window_border = "single",
+        },
+    },
+
+    {
         "codevogel/hatch.nvim",
         opts = {},
     },
