@@ -3,11 +3,12 @@
 local options = {
     formatters_by_ft = {
         markdown = { "rumdl" },
+        bash = { 'beautysh' },
         zsh = { "shfmt" },
         json = { "jq" },
         lua = { "stylua" },
         css = { "prettier" },
-        html = { "prettier" },
+        -- html = { "prettier" },
         yaml = { "yamlfmt" },
         toml = { "tombi" },
         python = {

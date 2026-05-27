@@ -14,25 +14,28 @@ return {
                     [""] = "rainbow-delimiters",
                 },
                 highlight = {
-                    "@annotation", -- Red
-                    "@attribute", -- Yellow
+                    "@annotation",     -- Red
+                    "@attribute",      -- Yellow
                     "@markup.heading", -- Blue
-                    "@boolean", -- Orange
-                    "@keyword", -- Violet
-                    "@markup", -- Cyan
-                    "@diff.plus", -- Green
+                    "@boolean",        -- Orange
+                    "@keyword",        -- Violet
+                    "@markup",         -- Cyan
+                    "@diff.plus",      -- Green
                 },
             }
         end,
     },
 
     {
-        "utilyre/barbecue.nvim",
+        'SmiteshP/nvim-navic',
         event = "LspAttach",
         dependencies = {
-            "SmiteshP/nvim-navic",
+            "neovim/nvim-lspconfig",
+            "nvim-tree/nvim-web-devicons"
         },
-        opts = {},
+        config = function()
+            require('configs.navic')
+        end,
     },
 
     {
