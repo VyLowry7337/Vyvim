@@ -13,23 +13,23 @@ local layouts = {
       box = 'horizontal',
       backdrop = false,
       height = 0.9,
-      border = 'none',
+      border = pad,
       {
         box = 'vertical',
         {
           win = 'input',
           height = 1,
-          border = 'rounded',
+          border = pad,
           title = '{title} {live} {flags}',
           title_pos = 'center',
         },
-        { win = 'list', title = ' Results ', title_pos = 'center', border = 'rounded' },
+        { win = 'list', title = ' Results ', title_pos = 'center', border = pad },
       },
       {
         win = 'preview',
         title = '{preview:Preview}',
         width = 0.51,
-        border = 'rounded',
+        border = pad,
         title_pos = 'center',
       },
     },
@@ -188,10 +188,27 @@ sources.explorer = {
 local config = {
   image = { enabled = false },
   dim = { enabled = true },
-  scope = { enabled = true },
+  scope = {
+    enabled = true,
+    treesitter = {
+      enabled = true,
+      blocks = {
+        enabled = true,
+      },
+    },
+  },
   indent = {
     enabled = true,
-    indent = {},
+    indent = {
+      -- hl = {
+      --   'IndentBlanklineIndent1',
+      --   'IndentBlanklineIndent2',
+      --   'IndentBlanklineIndent3',
+      --   'IndentBlanklineIndent4',
+      --   'IndentBlanklineIndent5',
+      --   'IndentBlanklineIndent6',
+      -- },
+    },
 
     animate = {
       enabled = not vim.g.neovide,
@@ -233,8 +250,9 @@ local config = {
   quickfile = { enabled = true },
   statuscolumn = { enabled = false },
   terminal = {
+    enabled = true,
     win = {
-      wo = { number = false, relativenumber = false },
+      wo = { style = 'terminal', number = false, relativenumber = false },
     },
   },
   explorer = {
@@ -265,6 +283,10 @@ local config = {
     configure = true,
   },
   toggle = { enabled = true },
+  terminal = {
+    enabled = true,
+    win = { style = 'terminal' },
+  },
   zen = { enabled = true },
   styles = {
     notification = {

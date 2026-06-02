@@ -5,7 +5,7 @@ return {
     {
       'saghen/blink.cmp',
       enabled = function()
-        return not vim.tbl_contains({ "typr" })
+        return not vim.tbl_contains({ 'typr' })
       end,
       version = '1.*',
       event = { 'InsertEnter', 'CmdLineEnter' },
@@ -47,7 +47,16 @@ return {
           ['<C-k>'] = false,
         },
         snippets = { preset = 'luasnip' },
-        sources = { default = { 'lsp', 'snippets', 'buffer', 'path' } },
+        sources = {
+          default = { 'lazydev', 'snippets', 'lsp', 'buffer', 'path' },
+          providers = {
+            lazydev = {
+              name = 'LazyDev',
+              module = 'lazydev.integrations.blink',
+              score_offset = 100,
+            },
+          },
+        },
         signature = {
           enabled = false,
           window = { show_documentation = true, treesitter_highlighting = true, border = 'single' },
@@ -60,8 +69,7 @@ return {
             auto_show_delay_ms = 200,
           }, cmp_ui.documentation),
           menu = vim.tbl_deep_extend('force', {
-            winhighlight =
-            'Normal:BlinkCmpMenu,CursorLine:BlinkCmpMenuSelection,Search:None,FloatBorder:BlinkCmpMenuBorder',
+            winhighlight = 'Normal:BlinkCmpMenu,CursorLine:BlinkCmpMenuSelection,Search:None,FloatBorder:BlinkCmpMenuBorder',
             draw = vim.tbl_deep_extend('force', {
               treesitter = { 'lsp' },
             }, cmp_ui.draw),

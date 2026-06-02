@@ -1,8 +1,4 @@
-local on_attach = require('configs.lsp').on_attach
-local on_init = require('configs.lsp').on_init
-local capabilities = require('configs.lsp').capabilities
-
-local lspconfig = require('configs.lsp')
+require('configs.lsp').defaults()
 
 local sev = vim.diagnostic.severity
 local signs = {
@@ -11,6 +7,7 @@ local signs = {
   Hint = ' ',
   Info = ' ',
 }
+
 vim.diagnostic.config({
   virtual_text = false,
   update_in_insert = false,
@@ -27,7 +24,7 @@ vim.diagnostic.config({
   },
 })
 
-lspconfig.servers = {
+local active_servers = {
   'vtsls',
   'lua_ls',
   'ty',
@@ -41,26 +38,17 @@ lspconfig.servers = {
   'yamlls',
 }
 
-for _, lspconfig.servers in ipairs(lspconfig.servers) do
-  vim.lsp.enable(servers)
-end
-
 vim.lsp.config('lua_ls', {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-
   settings = {
     Lua = {
       diagnostics = {
         enable = true,
       },
-
+      runtime = { version = 'LuaJIT' },
       workspace = {
         library = {
           vim.fn.expand('$VIMRUNTIME/lua'),
           vim.fn.expand('$VIMRUNTIME/lua/vim/lsp'),
-          vim.fn.stdpath('data') .. '/lazy/ui/nvchad_types',
           vim.fn.stdpath('data') .. '/lazy/lazy.nvim/lua/lazy',
         },
         maxPreload = 100000,
@@ -71,36 +59,17 @@ vim.lsp.config('lua_ls', {
 })
 
 vim.lsp.config('vtsls', {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
   filetypes = { 'typescript', 'javascript' },
-
   settings = {
     vtsls = {
       diagnostics = {
         enable = true,
-      },
-
-      workspace = {
-        library = {
-          vim.fn.expand('$VIMRUNTIME/lua'),
-          vim.fn.expand('$VIMRUNTIME/lua/vim/lsp'),
-          vim.fn.stdpath('data') .. '/lazy/ui/nvchad_types',
-          vim.fn.stdpath('data') .. '/lazy/lazy.nvim/lua/lazy',
-        },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
       },
     },
   },
 })
 
 vim.lsp.config('ty', {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-
   settings = {
     ty = {
       configurationFile = '/Users/dom/.config/lsp/ty/ty.toml',
@@ -136,10 +105,6 @@ vim.lsp.config('yamlls', {
 })
 
 vim.lsp.config('html', {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-
   filetypes = {
     'html',
     'htmldjango',
@@ -164,3 +129,7 @@ vim.lsp.config('html', {
     },
   },
 })
+
+for _, server in ipairs(active_servers) do
+  vim.lsp.enable(server)
+end

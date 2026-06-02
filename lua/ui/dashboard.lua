@@ -625,6 +625,8 @@ M.open = function(buf, win, action)
       vim.g.gndashboard_displayed = false
       dash_state[buf] = nil
       vim.wo.signcolumn = "yes"
+      vim.o.number = true
+      vim.o.wrap = true
       pcall(api.nvim_del_augroup_by_name, "GnDashboardAu")
     end,
   })

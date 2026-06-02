@@ -35,7 +35,7 @@ aucmd('LspAttach', {
   desc = 'LSP: Disable hover capability from Ruff',
 })
 
--- Open NvDash if no buffers open
+-- Open Dash if no buffers open
 aucmd('BufDelete', {
   callback = function()
     local bufs = vim.t.bufs
@@ -129,33 +129,33 @@ vim.api.nvim_create_autocmd('InsertLeave', {
 })
 
 -- JSON Comment Diagnostic Bypass
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-    if client == nil then
-      return
-    end
-
-    -- Ignore trailing commas in jsonc
-    if client.name == 'json' and client:supports_method('textDocument/publishDiagnostics') then
-      local orig_handler = vim.lsp.handlers['textDocument/publishDiagnostics']
-
-      vim.lsp.handlers['textDocument/publishDiagnostics'] = function(err, result, ctx, config)
-        if result and result.uri:match('%.jsonc$') and result.diagnostics then
-          -- Iterate backward so table.remove is safe
-          for i = #result.diagnostics, 1, -1 do
-            if result.diagnostics[i].code == 519 then
-              table.remove(result.diagnostics, i)
-            end
-          end
-        end
-        -- Pass the filtered diagnostics back to Neovim
-        orig_handler(err, result, ctx, config)
-      end
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   callback = function(args)
+--     local client = vim.lsp.get_client_by_id(args.data.client_id)
+--
+--     if client == nil then
+--       return
+--     end
+--
+--     -- Ignore trailing commas in jsonc
+--     if client.name == 'json' and client:supports_method('textDocument/publishDiagnostics') then
+--       local orig_handler = vim.lsp.handlers['textDocument/publishDiagnostics']
+--
+--       vim.lsp.handlers['textDocument/publishDiagnostics'] = function(err, result, ctx, config)
+--         if result and result.uri:match('%.jsonc$') and result.diagnostics then
+--           -- Iterate backward so table.remove is safe
+--           for i = #result.diagnostics, 1, -1 do
+--             if result.diagnostics[i].code == 519 then
+--               table.remove(result.diagnostics, i)
+--             end
+--           end
+--         end
+--         -- Pass the filtered diagnostics back to Neovim
+--         orig_handler(err, result, ctx, config)
+--       end
+--     end
+--   end,
+-- })
 
 -- Snacks Notifier LSP Progress
 local progress = vim.defaulttable()

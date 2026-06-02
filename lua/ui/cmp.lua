@@ -138,7 +138,7 @@ M.draw = {
   gap = 1,
   columns = {
     { 'kind_icon' },
-    { 'label',    'label_description', gap = 1 },
+    { 'label', 'label_description', gap = 1 },
     { 'kind' },
   },
   components = {
@@ -179,11 +179,19 @@ M.draw = {
 
 M.menu = {
   scrollbar = false,
-  border = 'single',
+  border = 'none',
 }
 
 M.documentation = {
   window = { border = 'single' },
+  draw = function(opts)
+    if opts.item and opts.item.documentation and opts.item.documentation.value then
+      local out = require('pretty_hover.parser').parse(opts.item.documentation.value)
+      opts.item.documentation.value = out:string()
+    end
+
+    opts.default_implementation(opts)
+  end,
 }
 
 return M

@@ -1,6 +1,29 @@
 return {
 
+  {
+    'kevinhwang91/nvim-bqf',
+    ft = 'qf',
+    dependencies = { 'junegunn/fzf.vim', lazy = true },
+    opts = {
+      preview = {
+        show_title = true,
+        winblend = 0,
+      },
+    },
+  },
+
+  {
+    'danymat/neogen',
+    opts = {},
+  },
+
   -- NvChad Plugins
+  {
+    'nvzone/minty',
+    dependencies = { 'nvzone/volt' },
+    cmd = { 'Shades', 'Huefy' },
+  },
+
   {
     'nvzone/typr',
     dependencies = 'nvzone/volt',
@@ -20,11 +43,6 @@ return {
       floating_window_scaling_factor = 0.75,
       yazi_floating_window_border = 'single',
     },
-  },
-
-  {
-    'codevogel/hatch.nvim',
-    opts = {},
   },
 
   {
@@ -61,7 +79,7 @@ return {
 
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('configs.rendermd')
     end,
@@ -92,6 +110,7 @@ return {
     event = 'LspAttach',
     opts = {
       border = 'single',
+      wrap = true,
     },
   },
 
@@ -117,88 +136,80 @@ return {
   {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = {
-      {
-        'folke/lazydev.nvim',
-        ft = 'lua',
-        opts = {},
-      },
-      config = function()
-        require('configs.lsp')
-      end,
-    },
+    config = function()
+      require('configs.lspconfig')
+    end,
+  },
 
-    {
-      'mason-org/mason.nvim',
-      cmd = { 'Mason', 'MasonInstall', 'MasonUpdate' },
-      dependencies = { 'b0o/schemastore.nvim' },
-      opts = {
-        PATH = 'skip',
+  {
+    'mason-org/mason.nvim',
+    cmd = { 'Mason', 'MasonInstall', 'MasonUpdate' },
+    dependencies = { 'b0o/schemastore.nvim' },
+    opts = {
+      PATH = 'skip',
 
-        ui = {
-          icons = {
-            package_pending = ' ',
-            package_installed = ' ',
-            package_uninstalled = ' ',
-          },
+      ui = {
+        icons = {
+          package_pending = ' ',
+          package_installed = ' ',
+          package_uninstalled = ' ',
         },
+      },
 
-        max_concurrent_installers = 10,
+      max_concurrent_installers = 10,
+    },
+  },
+
+  {
+    'mason-org/mason-lspconfig.nvim',
+    event = 'VeryLazy',
+    dependencies = { 'nvim-lspconfig' },
+    config = function()
+      require('configs.mason-lspconfig')
+    end,
+  },
+
+  {
+    'whoissethdaniel/mason-tool-installer.nvim',
+  },
+
+  {
+    'nvim-treesitter/nvim-treesitter',
+    event = { 'BufReadPre' },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      branch = 'main',
+    },
+    config = function()
+      require('configs.treesitter')
+    end,
+  },
+
+  {
+    'zerochae/lemon.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    event = 'LspAttach',
+    opts = {
+      scope = {
+        biscuit = { enabled = true, visible_mode = 'hover' },
+      },
+
+      inlay_hint = { enabled = false },
+
+      signature_help = { auto = false },
+      hover = {},
+      diagnostic = {
+        footer = {
+          enabled = true,
+          show_desc = false,
+        },
+      },
+      code_action = {
+        footer = {
+          enabled = true,
+          show_desc = false,
+        },
       },
     },
-
-    {
-      'mason-org/mason-lspconfig.nvim',
-      event = 'VeryLazy',
-      dependencies = { 'nvim-lspconfig' },
-      config = function()
-        require('configs.mason-lspconfig')
-      end,
-    },
-
-    {
-      'whoissethdaniel/mason-tool-installer.nvim',
-    },
-
-    {
-      'nvim-treesitter/nvim-treesitter',
-      event = { 'BufReadPre' },
-      dependencies = {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        branch = 'main',
-      },
-      config = function()
-        require('configs.treesitter')
-      end,
-    },
-
-    --   {
-    --     'zerochae/lemon.nvim',
-    --     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    --     event = "LspAttach",
-    --     opts = {
-    --       scope = {
-    --         biscuit = { enabled = true, visible_mode = "hover" },
-    --       },
-    --
-    --       inlay_hint = { enabled = false },
-    --
-    --       signature_help = { auto = false },
-    --       hover = {},
-    --       diagnostic = {
-    --         footer = {
-    --           enabled = true,
-    --           show_desc = false,
-    --         },
-    --       },
-    --       code_action = {
-    --         footer = {
-    --           enabled = true,
-    --           show_desc = false,
-    --         },
-    --       },
-    --     },
-    --   },
-    -- },
   },
 }
