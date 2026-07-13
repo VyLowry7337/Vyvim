@@ -304,10 +304,6 @@ local config = {
     sources = sources,
   },
 
-  lazygit = {
-    enabled = true,
-    configure = true,
-  },
   toggle = { enabled = true },
   terminal = {
     enabled = true,

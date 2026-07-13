@@ -71,6 +71,10 @@ vim.lsp.config('vtsls', {
   },
 })
 
+vim.lsp.config('bashls', {
+  filetypes = { 'sh', 'zsh', 'bash' },
+})
+
 vim.lsp.config('ty', {
   settings = {
     ty = {

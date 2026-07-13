@@ -2,7 +2,7 @@ local M = {}
 
 M.theme = {
   palette = 'catppuccinMocha',
-  transparent = false,
+  transparent = true,
 }
 
 M.style = 'compact'

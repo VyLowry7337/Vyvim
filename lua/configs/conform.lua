@@ -3,7 +3,7 @@
 local options = {
   formatters_by_ft = {
     markdown = { 'mdslw' },
-    bash = { 'beautysh' },
+    bash = { 'shfmt' },
     zsh = { 'shfmt' },
     json = { 'jq' },
     lua = { 'stylua' },
