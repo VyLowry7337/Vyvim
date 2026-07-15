@@ -31,6 +31,7 @@ local active_servers = {
   'ruff',
   'bashls',
   'cssls',
+  'clangd',
   'fish_lsp',
   'html',
   'jsonls',
