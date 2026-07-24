@@ -49,8 +49,7 @@ M.filetype = function()
     -- end
 
     if icon ~= '' then
-      local sep = is_block and '%#NonText#█' or ''
-      return sep .. icon .. ft .. ' %*'
+      return icon .. ft .. ' %*'
     end
   end
 
@@ -177,7 +176,7 @@ M.lsp = function()
       and client.name ~= 'biome'
     then
       -- local separator = "%#GnLspIcon#" .. "█"
-      local lsp_icon = '%#GnLspIcon#' .. ' 󰀘 '
+      local lsp_icon = '%#GnLspIcon#' .. ' 󰀘  '
       local lsp_text = '%#GnLspText#' .. (is_block and ' ' or '') .. client.name
 
       -- return (separator .. lsp_icon .. lsp_text .. " ") or " "
@@ -205,16 +204,16 @@ M.lsp_progress = function()
   end
 
   -- https://github.com/xieyonn/spinner.nvim/blob/main/lua/spinner/pattern.lua
-  local spinners = {
-
-    '✶',
-    '✸',
-    '✹',
-    '✺',
-    '✹',
-    '✷',
-  }
-  -- local spinners = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' }
+  -- local spinners = {
+  --
+  --   '✶',
+  --   '✸',
+  --   '✹',
+  --   '✺',
+  --   '✹',
+  --   '✷',
+  -- }
+  local spinners = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷' }
   local ms = vim.uv.hrtime() / 1000000
   local frame = math.floor(ms / 120) % #spinners
   local icon = spinners[frame + 1]

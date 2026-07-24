@@ -1,7 +1,7 @@
 local colors = require('theme.palettes.' .. require('vyrc').theme.palette)
 
-local bg0 = colors.code_block -- Surface0
-local bg1 = colors.obsidian -- Surface1
+local bg0 = colors.surface0 -- Surface0
+local bg1 = colors.surface1 -- Surface1
 
 -- Background Helper Fnc
 local function hex_to_rgb(hex)
@@ -82,22 +82,22 @@ local kind_links = {
 }
 
 local kind_bg = {
-  blue = blend(colors.navy, colors.bg, 0.25),
-  mauve = blend(colors.mauve, colors.bg, 0.25),
-  red = blend(colors.red, colors.bg, 0.25),
-  green = blend(colors.green, colors.bg, 0.25),
-  yellow = blend(colors.yellow, colors.bg, 0.25),
-  peach = blend(colors.peach, colors.bg, 0.25),
-  sapphire = blend(colors.sapphire, colors.bg, 0.25),
-  lavender = blend(colors.lavender, colors.bg, 0.25),
-  neutral = blend(colors.white, colors.bg, 0.25),
+  blue = blend(colors.blue, colors.base, 0.25),
+  mauve = blend(colors.mauve, colors.base, 0.25),
+  red = blend(colors.red, colors.base, 0.25),
+  green = blend(colors.green, colors.base, 0.25),
+  yellow = blend(colors.yellow, colors.base, 0.25),
+  peach = blend(colors.peach, colors.base, 0.25),
+  sapphire = blend(colors.sapphire, colors.base, 0.25),
+  lavender = blend(colors.lavender, colors.base, 0.25),
+  neutral = blend(colors.text, colors.base, 0.25),
 }
 
 local atom_colored_kinds = {
   -- Functions / methods → blue
-  BlinkCmpKindFunction = { fg = colors.navy, bg = kind_bg.blue },
-  BlinkCmpKindMethod = { fg = colors.navy, bg = kind_bg.blue },
-  BlinkCmpKindConstructor = { fg = colors.navy, bg = kind_bg.blue },
+  BlinkCmpKindFunction = { fg = colors.blue, bg = kind_bg.blue },
+  BlinkCmpKindMethod = { fg = colors.blue, bg = kind_bg.blue },
+  BlinkCmpKindConstructor = { fg = colors.blue, bg = kind_bg.blue },
 
   -- Variables / structs → mauve
   BlinkCmpKindVariable = { fg = colors.yellow, bg = kind_bg.yellow },
@@ -122,10 +122,10 @@ local atom_colored_kinds = {
   BlinkCmpKindConstant = { fg = colors.peach, bg = kind_bg.peach },
 
   -- Keywords (more neutral)
-  BlinkCmpKindKeyword = { fg = colors.white, bg = kind_bg.neutral },
+  BlinkCmpKindKeyword = { fg = colors.text, bg = kind_bg.neutral },
 
   -- Enums
-  BlinkCmpKindEnum = { fg = colors.navy, bg = kind_bg.blue },
+  BlinkCmpKindEnum = { fg = colors.blue, bg = kind_bg.blue },
   BlinkCmpKindEnumMember = { fg = colors.lavender, bg = kind_bg.lavender },
 
   -- Values / events
@@ -133,20 +133,20 @@ local atom_colored_kinds = {
   BlinkCmpKindEvent = { fg = colors.yellow, bg = kind_bg.yellow },
 
   -- Subtle / neutral kinds
-  BlinkCmpKindOperator = { fg = colors.pearl, bg = kind_bg.neutral },
-  BlinkCmpKindReference = { fg = colors.pearl, bg = kind_bg.neutral },
-  BlinkCmpKindColor = { fg = colors.pearl, bg = kind_bg.neutral },
+  BlinkCmpKindOperator = { fg = colors.text, bg = kind_bg.neutral },
+  BlinkCmpKindReference = { fg = colors.text, bg = kind_bg.neutral },
+  BlinkCmpKindColor = { fg = colors.text, bg = kind_bg.neutral },
 
   BlinkCmpKindTypeParameter = { fg = colors.red, bg = kind_bg.red },
 
-  BlinkCmpKindFile = { fg = colors.white, bg = kind_bg.neutral },
-  BlinkCmpKindFolder = { fg = colors.white, bg = kind_bg.neutral },
+  BlinkCmpKindFile = { fg = colors.text, bg = kind_bg.neutral },
+  BlinkCmpKindFolder = { fg = colors.text, bg = kind_bg.neutral },
 }
 
 local kind_text_hl = {
-  BlinkCmpKindTextFunction = { fg = colors.navy, italic = true },
-  BlinkCmpKindTextMethod = { fg = colors.navy, italic = true },
-  BlinkCmpKindTextConstructor = { fg = colors.navy, italic = true },
+  BlinkCmpKindTextFunction = { fg = colors.blue, italic = true },
+  BlinkCmpKindTextMethod = { fg = colors.blue, italic = true },
+  BlinkCmpKindTextConstructor = { fg = colors.blue, italic = true },
 
   BlinkCmpKindTextVariable = { fg = colors.yellow, italic = true },
   BlinkCmpKindTextStruct = { fg = colors.yellow, italic = true },
@@ -167,20 +167,20 @@ local kind_text_hl = {
 
   BlinkCmpKindTextKeyword = { fg = colors.mauve, italic = true },
 
-  BlinkCmpKindTextEnum = { fg = colors.navy, italic = true },
+  BlinkCmpKindTextEnum = { fg = colors.blue, italic = true },
   BlinkCmpKindTextEnumMember = { fg = colors.lavender, italic = true },
 
   BlinkCmpKindTextValue = { fg = colors.lavender, italic = true },
   BlinkCmpKindTextEvent = { fg = colors.yellow, italic = true },
 
-  BlinkCmpKindTextOperator = { fg = colors.pearl, italic = true },
-  BlinkCmpKindTextReference = { fg = colors.pearl, italic = true },
-  BlinkCmpKindTextColor = { fg = colors.pearl, italic = true },
+  BlinkCmpKindTextOperator = { fg = colors.text, italic = true },
+  BlinkCmpKindTextReference = { fg = colors.text, italic = true },
+  BlinkCmpKindTextColor = { fg = colors.text, italic = true },
 
   BlinkCmpKindTextTypeParameter = { fg = colors.red, italic = true },
 
-  BlinkCmpKindTextFile = { fg = colors.white, italic = true },
-  BlinkCmpKindTextFolder = { fg = colors.white, italic = true },
+  BlinkCmpKindTextFile = { fg = colors.text, italic = true },
+  BlinkCmpKindTextFolder = { fg = colors.text, italic = true },
 }
 
 local is_atom = style == 'atom_colored'
@@ -188,14 +188,14 @@ local is_atom = style == 'atom_colored'
 local M = {}
 
 M.override = {
-  BlinkCmpLabel = { fg = colors.white },
+  BlinkCmpLabel = { fg = colors.text },
   BlinkCmpLabelMatch = { fg = colors.blue, bold = true },
   BlinkCmpMenuSelection = { link = 'PmenuSel', bold = true },
-  BlinkCmpMenuBorder = { fg = colors.float_border },
-  BlinkCmpKind = { fg = colors.comment },
-  BlinkCmpMenu = { bg = colors.bg2 },
-  BlinkCmpDoc = is_atom and { bg = colors.bg } or { bg = colors.none },
-  BlinkCmpDocBorder = is_atom and { fg = colors.bg, bg = colors.bg } or { fg = colors.float_border, bg = colors.none },
+  BlinkCmpMenuBorder = { fg = colors.surface0 },
+  BlinkCmpKind = { fg = colors.overlay0 },
+  BlinkCmpMenu = { bg = colors.mantle },
+  BlinkCmpDoc = is_atom and { bg = colors.base } or { bg = colors.none },
+  BlinkCmpDocBorder = is_atom and { fg = colors.base, bg = colors.base } or { fg = colors.surface0, bg = colors.none },
 }
 
 M.add = is_atom and vim.tbl_deep_extend('force', atom_colored_kinds, kind_text_hl) or kind_links

@@ -20,6 +20,7 @@ local options = {
     'typescript',
     'tsx',
     'python',
+    'rust',
   },
 
   highlight = {

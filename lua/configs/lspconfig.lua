@@ -39,6 +39,7 @@ local active_servers = {
   'yamlls',
   'marksman',
   'ts_query_ls',
+  'rust_analyzer',
 }
 
 vim.lsp.config('lua_ls', {
@@ -129,6 +130,27 @@ vim.lsp.config('marksman', {
   cmd = { 'marksman', 'server' },
   filetypes = { 'markdown', 'md', 'markdown.mdx' },
   root_markers = { '.marksman.toml', '.git' },
+})
+
+vim.lsp.config('rust_analyzer', {
+  settings = {
+    ['rust-analyzer'] = {
+      imports = {
+        granularity = {
+          group = 'module',
+        },
+        prefix = 'self',
+      },
+      cargo = {
+        buildScripts = {
+          enable = true,
+        },
+      },
+      procMacro = {
+        enable = true,
+      },
+    },
+  },
 })
 
 for _, server in ipairs(active_servers) do

@@ -9,7 +9,11 @@ return {
   {
     'OXY2DEV/helpview.nvim',
     lazy = false,
-    opts = {},
+    opts = {
+      preview = {
+        icon_provider = 'devicons',
+      },
+    },
   },
 
   {

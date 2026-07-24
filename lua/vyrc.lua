@@ -1,8 +1,9 @@
 local M = {}
 
 M.theme = {
-  palette = 'catppuccinMocha',
-  transparent = true,
+  -- catppuccinMocha/Latte, pastelNightfall, everforestLight/Dark, kanagawaLotus/Dragon/Wave, oneDark/Light
+  palette = 'pastelNightfall',
+  transparent = false,
 }
 
 M.style = 'compact'

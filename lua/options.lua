@@ -2,6 +2,10 @@ local opt = vim.opt
 local o = vim.o
 local g = vim.g
 
+-- Use mouse when lazy
+o.mouse = 'a'
+o.mousescroll = 'ver:1,hor:1'
+
 -- Indenting
 o.expandtab = true
 o.shiftwidth = 4
@@ -11,18 +15,20 @@ o.softtabstop = 4
 
 -- Numbers
 o.number = true
-o.numberwidth = 2
 o.ruler = false
 o.relativenumber = true
 
 -- Python
-vim.g.python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.14/bin/python3'
+g.python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.14/bin/python3'
 
 -- Matchup
-vim.g.matchup_matchparen_enabled = 0
+g.matchup_matchparen_enabled = 0
 
 -- Remove bottom cmdline/padding
 o.cmdheight = 0
+
+-- Go past end of line ONLY in blockwise
+o.virtualedit = 'block'
 
 -- Windows
 o.winborder = 'none'
@@ -41,7 +47,7 @@ o.undofile = true
 o.ttyfast = true
 o.updatetime = 100
 o.smoothscroll = false
-o.scrolloff = 8
+o.scrolloff = 3
 o.sidescrolloff = 8
 o.laststatus = 3
 o.timeoutlen = 250
@@ -84,43 +90,43 @@ o.splitright = true
 o.splitkeep = 'screen'
 
 -- Neovide
-if vim.g.neovide then
+if g.neovide then
   -- vim.o.guifont = "Ellograph CF:h22:300:#e-subpixelantialias:#h-none"
-  vim.g.neovide_opacity = 0.90
-  vim.g.neovide_window_blurred = true
-  vim.g.neovide_scroll_animation_length = 0.5
-  vim.g.neovide_scroll_animation_far_lines = 99999
-  vim.g.neovide_cursor_animate_command_line = true
-  vim.g.neovide_show_border = false
-  vim.g.neovide_hide_mouse_while_typing = true
-  vim.g.neovide_no_idle = true
-  vim.g.neovide_floating_corner_radius = 0.4
-  vim.g.neovide_pixel_geometry = 'RGBH'
-  vim.opt.linespace = 0
-  vim.opt.guicursor = {
+  g.neovide_opacity = 0.90
+  g.neovide_window_blurred = true
+  g.neovide_scroll_animation_length = 0.5
+  g.neovide_scroll_animation_far_lines = 99999
+  g.neovide_cursor_animate_command_line = true
+  g.neovide_show_border = false
+  g.neovide_hide_mouse_while_typing = true
+  g.neovide_no_idle = true
+  g.neovide_floating_corner_radius = 0.4
+  g.neovide_pixel_geometry = 'RGBH'
+  opt.linespace = 0
+  opt.guicursor = {
     'n-v-c:block',
     'i-ci-ve:ver25',
     'r-cr:hor20',
     'o:hor50',
     'a:blinkwait500-blinkoff500-blinkon250-Cursor',
   }
-  vim.g.neovide_position_animation_length = 0.3
-  vim.g.neovide_cursor_animate_in_insert_mode = true
-  vim.g.neovide_cursor_smooth_blink = true
-  vim.g.neovide_cursor_antialiasing = false
-  vim.g.neovide_cursor_trail_size = 1.0
-  vim.g.neovide_cursor_animation_length = 0.150
-  vim.g.neovide_refresh_rate = 144
-  vim.g.neovide_padding_top = 0
-  vim.g.neovide_padding_bottom = 0
-  vim.g.neovide_padding_left = 20
-  vim.g.neovide_padding_right = 0
-  vim.g.neovide_pixel_geometry = 'RGBH'
-  vim.g.neovide_floating_shadow = false
+  g.neovide_position_animation_length = 0.3
+  g.neovide_cursor_animate_in_insert_mode = true
+  g.neovide_cursor_smooth_blink = true
+  g.neovide_cursor_antialiasing = false
+  g.neovide_cursor_trail_size = 1.0
+  g.neovide_cursor_animation_length = 0.150
+  g.neovide_refresh_rate = 144
+  g.neovide_padding_top = 0
+  g.neovide_padding_bottom = 0
+  g.neovide_padding_left = 20
+  g.neovide_padding_right = 0
+  g.neovide_pixel_geometry = 'RGBH'
+  g.neovide_floating_shadow = false
 
   -- Function to change scale factor (Ctrl + - / =)
   local change_scale_factor = function(delta)
-    vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
+    g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
   end
 
   vim.keymap.set('n', '<C-=>', function()

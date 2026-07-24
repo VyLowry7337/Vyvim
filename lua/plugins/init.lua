@@ -1,6 +1,23 @@
 return {
 
   {
+    'obsidian-nvim/obsidian.nvim',
+    version = '*',
+    opts = {
+      legacy_commands = false,
+      picker = {
+        name = 'snacks.picker',
+      },
+      workspaces = {
+        {
+          name = 'Vy',
+          path = '/Users/dom/Library/Mobile Documents/iCloud~md~obsidian/Documents/vy',
+        },
+      },
+    },
+  },
+
+  {
     'kevinhwang91/nvim-bqf',
     ft = 'qf',
     dependencies = { 'junegunn/fzf.vim', lazy = true },
@@ -183,26 +200,40 @@ return {
       inlay_hint = {
         enabled = false,
         param_icon = true,
+        hide_in_insert = false,
         type_icon = true,
-        type_text = false,
+        type_text = true,
         fn_icon = true,
         fn_return_text = false,
-        generic_text = false,
+        generic_text = true,
         object_threshold = 3,
       },
 
       signature_help = { auto = false },
-      hover = {},
+      hover = {
+        border = 'rounded',
+        scroll_indicator = false,
+        show_filetype = false,
+        show_server = false,
+        show_symbol = true,
+        show_kind_prefix = true,
+        footer = { enabled = false },
+      },
       diagnostic = {
+        border = 'rounded',
+        scroll_indicator = false,
+        show_filetype = false,
+        show_server = false,
+        show_symbol = false,
+        hide_diagnostic = true,
         footer = {
-          enabled = true,
-          show_desc = false,
+          enabled = false,
         },
       },
       code_action = {
+        border = 'rounded',
         footer = {
-          enabled = true,
-          show_desc = false,
+          enabled = false,
         },
       },
     },
