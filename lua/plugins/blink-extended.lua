@@ -156,8 +156,9 @@ return {
         unmatched_group = 'BlinkPairsUnmatched',
 
         matchparen = {
-          enabled = false,
+          enabled = true,
           cmdline = false,
+          group = 'BlinkPairsMatchParen',
         },
       },
 

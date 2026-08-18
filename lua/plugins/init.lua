@@ -1,23 +1,6 @@
 return {
 
   {
-    'obsidian-nvim/obsidian.nvim',
-    version = '*',
-    opts = {
-      legacy_commands = false,
-      picker = {
-        name = 'snacks.picker',
-      },
-      workspaces = {
-        {
-          name = 'Vy',
-          path = '/Users/dom/Library/Mobile Documents/iCloud~md~obsidian/Documents/vy',
-        },
-      },
-    },
-  },
-
-  {
     'kevinhwang91/nvim-bqf',
     ft = 'qf',
     dependencies = { 'junegunn/fzf.vim', lazy = true },
@@ -27,11 +10,6 @@ return {
         winblend = 0,
       },
     },
-  },
-
-  {
-    'danymat/neogen',
-    opts = {},
   },
 
   -- NvChad Plugins
@@ -189,7 +167,7 @@ return {
   { 'bezhermoso/tree-sitter-ghostty', build = 'make nvim_install' },
 
   {
-    'zerochae/lemon.nvim',
+    'VyLowry7337/lemon.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = 'LspAttach',
     opts = {
@@ -229,6 +207,24 @@ return {
         footer = {
           enabled = false,
         },
+      },
+      diagnostic_list = {
+        layout = 'split',
+        height = 10,
+        border = 'single',
+        max_height = 0.4,
+        max_width = 0.8,
+        pad_right = 4,
+        scroll_indicator = false,
+        close_events = {},
+        close_key = 'q',
+        confirm_key = '<CR>',
+        scope = 'workspace',
+        scope_toggle_key = 's',
+        show_server = true,
+        show_filetype = true,
+        hide_diagnostic = false,
+        footer = { enabled = true, show_desc = true },
       },
       code_action = {
         border = 'rounded',

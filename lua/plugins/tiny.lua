@@ -31,6 +31,9 @@ return {
           },
           multilines = {
             enabled = true,
+            severity = {
+              vim.diagnostic.severity.ERROR,
+            },
           },
 
           show_diags_only_under_cursor = false,

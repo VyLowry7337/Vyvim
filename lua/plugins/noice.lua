@@ -13,7 +13,7 @@ return {
         format = {
           cmdline = {
             pattern = '^:',
-            icon = ' ',
+            icon = ' ',
             lang = 'vim',
             title = ' NeoVim ',
             icon_hl_group = 'NoiceCmdlineIcon',

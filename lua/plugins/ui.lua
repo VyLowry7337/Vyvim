@@ -40,7 +40,7 @@ return {
   },
 
   {
-    'zerochae/dbab.nvim',
+    'VyLowry7337/dbab.nvim',
     dependencies = {
       'MunifTanjim/nui.nvim',
       'nvim-lua/plenary.nvim',

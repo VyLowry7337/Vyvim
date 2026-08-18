@@ -388,7 +388,7 @@ local stl_block = {
 
   GnGitIcon = { fg = colors.mauve },
   GnGitText = { fg = colors.text },
-  GnLsp = { bg = colors.mantle, fg = colors.text },
+  GnLsp = { bg = colors.none, fg = colors.text },
   GnLspMsg = { bg = colors.green, fg = colors.crust },
 
   GnLspIcon = { bg = colors.red, fg = colors.crust },
@@ -398,7 +398,7 @@ local stl_block = {
   GnCursorIcon = { bg = colors.peach, fg = colors.crust },
   GnCursorText = { bg = colors.none, fg = colors.peach },
   GnFolderIcon = { bg = colors.red, fg = colors.crust },
-  GnFolderText = { bg = colors.none, fg = colors.red },
+  GnFolderText = { bg = colors.base, fg = colors.red },
   GnQfIcon = { bg = colors.mauve, fg = colors.crust },
   GnQfText = { bg = colors.none, fg = colors.mauve },
 
@@ -833,6 +833,7 @@ M.plugins = {
   BlinkPairsPurple = { fg = colors.mauve },
   BlinkPairsCyan = { fg = colors.teal },
   BlinkPairsUnmatched = { fg = colors.pink },
+  BlinkPairsMatchParen = { bg = colors.surface2 },
 }
 
 M.markview = {

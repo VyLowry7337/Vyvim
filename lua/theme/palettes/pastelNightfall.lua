@@ -1,7 +1,7 @@
 return {
   crust = '#1A1A22',
   mantle = '#1E2030',
-  base = '#232634',
+  base = '#242634',
   surface0 = '#2E3142',
   surface1 = '#3A3D4E',
   surface2 = '#474B5D',

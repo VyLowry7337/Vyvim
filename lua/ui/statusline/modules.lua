@@ -37,7 +37,7 @@ M.filetype = function()
   local filetype = vim.api.nvim_get_option_value('filetype', { buf = buf })
 
   local set_file_info = function(color, ft_icon, ft)
-    local icon = ' 󰈚 '
+    local icon = ' 󰈚  '
     local existing = vim.api.nvim_get_hl(0, { name = 'GnFileIcon' })
     vim.api.nvim_set_hl(0, 'GnFileIcon', vim.tbl_extend('force', existing, { fg = color }))
     icon = '%#GnFileIcon#' .. ' ' .. ft_icon
@@ -153,7 +153,7 @@ M.cursor = function()
   local colmn_text = '' .. current_colmn
 
   -- local separator = "%#GnCursorIcon#" .. "█"
-  local icon = '%#GnCursorIcon#' .. '  '
+  local icon = '%#GnCursorIcon#' .. '   '
   local text = '%#GnCursorText#' .. (is_block and ' ' or '') .. line_text .. ':' .. colmn_text
   -- return (icon .. replace_number_to_ic(text) .. " ") or " "
   return icon .. text .. ' %*'
@@ -194,7 +194,7 @@ M.cwd = function()
   if vim.o.columns <= 85 then
     return ''
   end
-  return '%#GnCwdIcon# 󰉋 %#GnCwdText#' .. (is_block and ' ' or '') .. name .. ' %*'
+  return '%#GnCwdIcon# 󰉋  %#GnCwdText#' .. (is_block and ' ' or '') .. name .. ' %*'
 end
 
 M.lsp_progress = function()
