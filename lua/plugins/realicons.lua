@@ -10,8 +10,14 @@ return {
         flow = {
           type = 'vscode',
           path = vim.fn.expand('/Users/dom/Workspace/toolsApps/neovimTools/flowIcons'),
-          theme = 'flow-dawn',
+          theme = 'flow-deep',
           license = 'personal',
+        },
+
+        catppuccin = {
+          type = 'vscode',
+          path = vim.fn.expand('/Users/dom/.vscode/extensions/catppuccin.catppuccin-vsc-icons-1.26.0/'),
+          theme = 'mocha',
         },
       },
 
