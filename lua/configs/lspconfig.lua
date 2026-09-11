@@ -29,7 +29,7 @@ local active_servers = {
   'lua_ls',
   'ty',
   'ruff',
-  'bashls',
+  'shuck',
   'cssls',
   'clangd',
   'fish_lsp',
@@ -71,10 +71,6 @@ vim.lsp.config('vtsls', {
       },
     },
   },
-})
-
-vim.lsp.config('bashls', {
-  filetypes = { 'sh', 'zsh', 'bash' },
 })
 
 vim.lsp.config('ty', {
@@ -123,6 +119,14 @@ vim.lsp.config('html', {
   hover = {
     documentation = true,
     references = true,
+  },
+})
+
+vim.lsp.config('shuck', {
+  filetypes = {
+    'sh',
+    'bash',
+    'zsh',
   },
 })
 

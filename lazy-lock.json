@@ -15,7 +15,7 @@
   "fzf.vim": { "branch": "master", "commit": "d2a59a992a2455f609c0fde2ebd84427ea8f919a" },
   "grug-far.nvim": { "branch": "main", "commit": "11595bf747edc270bce2069d1020502ad4ae56cf" },
   "helpview.nvim": { "branch": "main", "commit": "06006b471890f19efeb199ffab5da49a2d624619" },
-  "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
+  "lazy.nvim": { "branch": "main", "commit": "85c7ff3711b730b4030d03144f6db6375044ae82" },
   "lazydev.nvim": { "branch": "main", "commit": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d" },
   "lazygit.nvim": { "branch": "main", "commit": "a04ad0dbc725134edbee3a5eea29290976695357" },
   "learnlua.nvim": { "branch": "main", "commit": "9c03765e948c2525a4fd49ccc6939b6958392bf5" },

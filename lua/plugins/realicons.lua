@@ -9,7 +9,7 @@ return {
       packs = {
         flow = {
           type = 'vscode',
-          path = vim.fn.expand('/Users/dom/Workspace/toolsApps/neovimTools/flowIcons'),
+          path = vim.fn.expand('/Users/vy/Workspace/toolsApps/neovimTools/flowIcons'),
           theme = 'flow-deep',
           license = 'personal',
         },

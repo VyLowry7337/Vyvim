@@ -10,4 +10,6 @@ M.linters_by_ft = {
   yaml = { 'yamllint' },
   toml = { 'tombi' },
   env = { 'dotenv-linter' },
+  bash = { 'shuck' },
+  zsh = { 'shuck' },
 }
